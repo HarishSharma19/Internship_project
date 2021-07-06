@@ -6,8 +6,13 @@ import './App.css';
 
 function App() {
 
-  const [usernameReg, setUsernameReg] = useState('')
-  const [passwordReg, setPasswordReg] = useState('')
+  const [usernameReg, setUsernameReg] = useState("");
+  const [passwordReg, setPasswordReg] = useState("");
+
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+
+  const [LoginStatus, setLoginStatus] = useState("");
 
   const register = () => {
     Axios.post("http://localhost:3001/register", {
@@ -17,6 +22,21 @@ function App() {
       console.log(response);
     });
   };
+
+  const login = () => {
+    Axios.post("http://localhost:3001/login", {
+      username: username,
+      password: password,
+    }).then((response) => {
+     
+      if (response.data.message) {
+        setLoginStatus(response.data.message);
+      } else {
+        setLoginStatus(response.data[0].username);
+      }
+    });
+  };
+
   return (
     <div className="App">
     <div className="Wrapper fadeInDown">
@@ -40,11 +60,16 @@ function App() {
     <div id="formContent">
       <h2 className="active">Login</h2>
       <form>
-        <input type="text" id="login" className="fadeIn second" name="login" placeholder="User Name"/>
-        <input type="text" id="password" className="fadeIn third" name="login" placeholder="Password"/>
-        <input type="submit" className="fadeIn fourth" value="Log in"/>
+        <input type="text"  onChange={(e) => { setUsername(e.target.value);}} 
+         className="fadeIn second" placeholder="User Name"/>
+
+        <input type="text"  onChange={(e) => { setPassword(e.target.value);}} 
+         className="fadeIn third"  placeholder="Password"/>
+        <input type="submit" className="fadeIn fourth" onClick={login} value="Log in"/>
         
       </form>
+      <h3>{LoginStatus}</h3>
+
     </div>
     </div> 
     </div>

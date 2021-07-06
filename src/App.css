@@ -3,12 +3,22 @@
 /* BASIC */
 
 html {
-  background-color: #56baed;
+  background-repeat: no-repeat;
 }
 
 body {
   font-family: "Poppins", sans-serif;
-  height: 100vh;
+  height: 50%;
+  width: auto;
+  background-image: url("222.jpg"); 
+  background-repeat: no-repeat;
+  background-position: center;
+
+}
+
+#app {
+   align-items: center;
+ 
 }
 
 a {
@@ -42,6 +52,9 @@ h2 {
   padding: 20px;
 }
 
+h3 {
+   color: red;
+}
 #formContent {
   -webkit-border-radius: 10px 10px 10px 10px;
   border-radius: 10px 10px 10px 10px;
