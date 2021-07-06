@@ -59,6 +59,7 @@ function App() {
     <div className="Wrapper fadeInDown">
     <div id="formContent">
       <h2 className="active">Login</h2>
+      <h1>{LoginStatus}</h1>
       <form>
         <input type="text"  onChange={(e) => { setUsername(e.target.value);}} 
          className="fadeIn second" placeholder="User Name"/>
@@ -68,8 +69,6 @@ function App() {
         <input type="submit" className="fadeIn fourth" onClick={login} value="Log in"/>
         
       </form>
-      <h3>{LoginStatus}</h3>
-
     </div>
     </div> 
     </div>
